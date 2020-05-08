@@ -212,13 +212,16 @@ class googleimagesdownload:
                 var open = XHR.prototype.open;
                 var send = XHR.prototype.send;
                 var data = [];
+
                 XHR.prototype.open = function(method, url, async, user, pass) {
                     this._url = url;
                     open.call(this, method, url, async, user, pass);
                 }
+
                 XHR.prototype.send = function(data) {
                     var self = this;
                     var url = this._url;
+
                     function stateChanged() {
                         if (self.readyState == 4) {
                             console.log("data available for: " + url)
@@ -230,6 +233,7 @@ class googleimagesdownload:
                     }
                     send.call(this, data);
                 };
+
                 XHR.prototype._data = [];
             })(XMLHttpRequest);
         """)
