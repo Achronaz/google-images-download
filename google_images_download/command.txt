@@ -1,0 +1,1 @@
+python google_images_download.py -k "burger" -l 1024 -cd "C:\\image_crawler\\chromedriver.exe"
